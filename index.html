@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>Sandhiya Sales Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              pinterest: {
+                red: '#E60023',
+                redHover: '#ad081b',
+                darkBg: '#111111',
+                card: '#191919',
+                hover: '#333333',
+                input: '#333333',
+                border: '#3E3E3E',
+                grayHover: '#E9E9E9'
+              }
+            },
+            fontFamily: {
+              sans: [
+                '-apple-system', 
+                'BlinkMacSystemFont', 
+                '"Segoe UI"', 
+                'Roboto', 
+                'Oxygen-Sans', 
+                'Ubuntu', 
+                'Cantarell', 
+                '"Fira Sans"', 
+                '"Droid Sans"', 
+                '"Helvetica Neue"', 
+                'Helvetica', 
+                'Arial', 
+                'sans-serif'
+              ],
+            },
+            borderRadius: {
+              'pin': '32px',
+            },
+            letterSpacing: {
+              tight: '-0.015em', // iOS style tight tracking
+            },
+            spacing: {
+              'safe-bottom': 'env(safe-area-inset-bottom)',
+              'safe-top': 'env(safe-area-inset-top)'
+            },
+            animation: {
+              'pop': 'pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+              'slide-up': 'slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            },
+            keyframes: {
+              pop: {
+                '0%': { transform: 'scale(0.95)', opacity: '0' },
+                '100%': { transform: 'scale(1)', opacity: '1' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* iOS Native App Text Rendering & Full Height Fixes */
+      html {
+        height: 100%;
+        height: -webkit-fill-available; /* Fix for Safari Mobile */
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased; 
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        font-weight: 400;
+        letter-spacing: -0.011em;
+        color: #111;
+        overscroll-behavior-y: none;
+        min-height: 100vh;
+        min-height: -webkit-fill-available; /* Fix for Safari Mobile */
+        padding-bottom: env(safe-area-inset-bottom); /* Global Safe Area */
+      }
+
+      /* Specific Heading Weights - Reduced from Bold to Semibold where appropriate */
+      h1, h2, h3, h4, h5, h6 {
+        font-weight: 600 !important;
+        letter-spacing: -0.02em;
+      }
+      
+      .font-bold { font-weight: 600 !important; } 
+      .font-extrabold { font-weight: 700 !important; }
+
+      /* Input fields typography */
+      input, textarea, select, button {
+        font-family: inherit;
+        font-weight: 500; 
+      }
+
+      /* --- PINTEREST iOS INPUT STYLE (Native Feel) --- */
+      .pin-input {
+        background-color: #E9E9E9; 
+        border: none; 
+        color: #111111;
+        border-radius: 9999px; 
+        padding: 14px 20px;
+        font-size: 16px; 
+        font-weight: 500;
+        width: 100%;
+        outline: none;
+        transition: background-color 0.2s ease;
+      }
+
+      .pin-input:hover {
+        background-color: #e2e2e2;
+      }
+
+      .pin-input:focus {
+        background-color: #dcdcdc; 
+      }
+
+      .pin-input::placeholder {
+        color: #767676; 
+        font-weight: 400;
+      }
+
+      /* Dark Mode Inputs */
+      .dark .pin-input {
+        background-color: #333333; 
+        color: #ffffff;
+      }
+
+      .dark .pin-input:hover {
+        background-color: #3d3d3d;
+      }
+
+      .dark .pin-input:focus {
+        background-color: #454545; 
+      }
+      
+      .dark .pin-input::placeholder {
+        color: #8E8E8E;
+      }
+
+      /* Textarea Variant */
+      .pin-textarea {
+        @apply pin-input;
+        border-radius: 24px !important;
+        padding: 16px 20px !important;
+        resize: none;
+      }
+
+      /* Button Interaction */
+      .pin-btn {
+        transition: transform 0.1s cubic-bezier(0.3, 0.7, 0.4, 1.5), opacity 0.2s ease;
+        cursor: pointer;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+      }
+      
+      .pin-btn:active {
+        transform: scale(0.96) !important;
+        opacity: 0.9;
+      }
+
+      button {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      /* UTILITY CLASS FOR HIDING SCROLLBAR (Used conditionally) */
+      .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+      }
+      .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+      }
+      
+      /* --- CUSTOM SCROLLBAR CONFIGURATION --- */
+
+      /* Desktop: Show stylized scrollbar */
+      @media (min-width: 768px) {
+        ::-webkit-scrollbar {
+          width: 8px; 
+          height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+          background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+          background: #cccccc; 
+          border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background: #999999; 
+        }
+        .dark ::-webkit-scrollbar-thumb {
+          background: #333; 
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+          background: #555; 
+        }
+      }
+      
+      /* Mobile: Hide scrollbar by default (Native feel) */
+      @media (max-width: 767px) {
+        ::-webkit-scrollbar {
+          width: 0px; 
+          background: transparent;
+        }
+      }
+      
+      /* Safe area padding utilities */
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top);
+      }
+      .mb-safe {
+        margin-bottom: env(safe-area-inset-bottom);
+      }
+      .bottom-safe {
+        bottom: env(safe-area-inset-bottom);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.41.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-white text-[#111] dark:bg-[#111111] dark:text-white antialiased selection:bg-[#E60023] selection:text-white transition-colors duration-300">
+    <div id="root"></div>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "name": "Sandhiya Sales Manager",
+  "description": "A comprehensive sales dashboard for Surat-based dealers handling CSL, Invoices, Payments, and Employee Chats with specific community data automation.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
